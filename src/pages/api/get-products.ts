@@ -1,12 +1,11 @@
 import type { APIRoute } from "astro";
-import { get } from 'lodash'
 import app from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
 export const POST: APIRoute = async ({ request, locals }) => {
     return new Response(JSON.stringify({
         locals,
-        env: get(locals, "runtime.env")
+        env: locals?.runtime?.env
     }))
     // try {
     //     return new Response(JSON.stringify(locals))
