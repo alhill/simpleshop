@@ -15,12 +15,14 @@ const serviceAccount = {
   client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
 };
 
+console.log(18, import.meta.env)
+
 const initApp = () => {
-  if (import.meta.env.PROD) {
-    console.info('PROD env detected. Using default service account.')
-    return initializeApp()
-  }
-  console.info('Loading service account from env.')
+  // if (import.meta.env.PROD) {
+  //   console.info('PROD env detected. Using default service account.')
+  //   return initializeApp()
+  // }
+  // console.info('Loading service account from env.')
   return initializeApp({
     credential: cert(serviceAccount as ServiceAccount)
   })
