@@ -1,5 +1,9 @@
 import type { APIRoute } from "astro";
 
-export const GET: APIRoute = async () => {
-    return new Response(JSON.stringify(import.meta.env))
+export const GET: APIRoute = async ({ locals }) => {
+    return new Response(JSON.stringify({
+        env: import.meta.env,
+        process: process.env,
+        locals
+    }))
 };
