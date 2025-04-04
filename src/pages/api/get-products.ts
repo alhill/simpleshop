@@ -8,6 +8,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         return new Response(JSON.stringify({ error: "Missing ID" }), { status: 400 });
     }
     try {
+        return new Response(JSON.stringify(locals))
         const db = getFirestore(app(locals?.runtime?.env || {}));
         const productsRef = db.collection("products");
         const productSnap = await productsRef.get()
