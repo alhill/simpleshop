@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
-export const GET: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
     try {
         const db = getFirestore(app);
         const productsRef = db.collection("products");
