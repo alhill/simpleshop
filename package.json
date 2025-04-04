@@ -9,6 +9,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.5.6"
+    "@astrojs/cloudflare": "^12.4.0",
+    "@astrojs/react": "^4.2.3",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "astro": "^5.5.6",
+    "astro-seo": "^0.8.4",
+    "dayjs": "^1.11.13",
+    "firebase": "^9.23.0",
+    "firebase-admin": "^13.2.0",
+    "lodash": "^4.17.21",
+    "react": "^18.3.1",
+    "react-admin": "^5.7.0",
+    "react-admin-firebase": "^5.0.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^7.4.1",
+    "tailwindcss": "^4.1.1"
   }
 }
