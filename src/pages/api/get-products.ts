@@ -1,14 +1,14 @@
 import type { APIRoute } from "astro";
-import { app } from "../../firebase/server";
+import app from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
     const { slug } = await request.json()
     if (!slug) {
         return new Response(JSON.stringify({ error: "Missing ID" }), { status: 400 });
     }
     try {
-        const db = getFirestore(app);
+        const db = getFirestore(app(locals?.runtime?.env || {}));
         const productsRef = db.collection("products");
         const productSnap = await productsRef.get()
         const product = productSnap.docs[0]?.data()
