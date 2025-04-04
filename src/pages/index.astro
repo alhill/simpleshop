@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
+import addRoot from '../utils/addRoot'
 
 let product = { loading: true }
 
 try{
-	const productRes = await fetch("http://localhost:4321/api/get-products", {
+	const productRes = await fetch(addRoot("/api/get-products"), {
 		method: "POST",
 		headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({ slug: "test" })
+		}
 	})
 	product = await productRes?.json()
 } catch(err) {

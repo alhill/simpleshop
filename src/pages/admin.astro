@@ -1,5 +1,6 @@
 --- 
 import App from '../components/admin/App';
+import AdminLayout from '../layouts/AdminLayout.astro';
 
 ---
 
@@ -13,6 +14,8 @@ import App from '../components/admin/App';
         <title>Book-shop admin</title>
     </head>
     <body>
-        <App client:only="react" />
+        <AdminLayout>
+            <App client:only="react" />
+        </AdminLayout>
     </body>
 </html>
