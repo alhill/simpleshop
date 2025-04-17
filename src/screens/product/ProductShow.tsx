@@ -1,4 +1,4 @@
-import { Show, SimpleShowLayout, TextField } from 'react-admin';
+import { ImageField, Show, SimpleShowLayout, TextField } from 'react-admin';
 
 const ProductShow = () => (
     <Show>
@@ -6,6 +6,7 @@ const ProductShow = () => (
             <TextField source="name" />
             <TextField source="slug" />
             <TextField source="price" />
+            <ImageField source="images" />
         </SimpleShowLayout>
     </Show>
 );

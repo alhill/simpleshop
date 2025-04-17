@@ -1,21 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import AdminDashboard from "./AdminDashboard";
+import React from 'react'
+import AdminDashboard from './AdminDashboard'
 
 const App = () => {
-    const router = createBrowserRouter(
-        [
-            {
-                path: "*",
-                element: (
-                    <AdminDashboard />
-                ),
-            },
-        ],
-        { basename: "/admin" },
-    );
-    return <RouterProvider router={router} />;
+    return (
+        <AdminDashboard />
+    )
 }
 
 export default App
-
-

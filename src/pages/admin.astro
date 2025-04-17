@@ -1,14 +1,14 @@
 --- 
-import App from '../components/admin/App';
 import AdminLayout from '../layouts/AdminLayout.astro';
-
+import App from '../components/admin/App'
 ---
 
 <html lang="es">
     <head>
         <script is:inline type="text/javascript">
-            if (location.pathname === "/admin" && location.hash === "") {
-                location.replace("/admin/");
+            const path = location.pathname
+            if ((path === "/admin" || path === "/admin/") && location.hash === "") {
+                location.replace("/admin/#");
             }
         </script>
         <title>Book-shop admin</title>

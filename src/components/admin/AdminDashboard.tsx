@@ -1,4 +1,4 @@
-import { Admin, Resource } from 'react-admin'
+import { Admin, Resource, useGetIdentity } from 'react-admin'
 import { FirebaseDataProvider, FirebaseAuthProvider } from 'react-admin-firebase'
 import AdminLanding from '../../screens/AdminLanding';
 import { ProductCreate, ProductEdit, ProductList, ProductShow } from '../../screens/product';
@@ -7,6 +7,7 @@ import { CategoryCreate, CategoryEdit, CategoryList, CategoryShow } from '../../
 import { TagCreate, TagEdit, TagList, TagShow } from '../../screens/tag';
 import { VariantCreate, VariantEdit, VariantList, VariantShow } from '../../screens/variant';
 import { OrderCreate, OrderEdit, OrderList, OrderShow } from '../../screens/order';
+import { processFileFields, cleanupFileFields } from '../../s3'
 
 const firebaseConfig = {
     apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
@@ -19,10 +20,27 @@ const firebaseConfig = {
 };
 
 const options = {}
-const dataProvider = FirebaseDataProvider(firebaseConfig, options)
+const firebaseDataProvider = FirebaseDataProvider(firebaseConfig, options)
 const authProvider = FirebaseAuthProvider(firebaseConfig, options)
 
 const AdminDashboard = () => {
+    
+    const dataProvider = {
+        ...firebaseDataProvider,
+        create: async (resource: any, params: any) => {
+            const updatedParams = await processFileFields(params);
+            return firebaseDataProvider.create(resource, updatedParams);
+        },
+        update: async (resource: any, params: any) => {
+            const updatedParams = await processFileFields(params);
+            return firebaseDataProvider.update(resource, updatedParams);
+        },
+        delete: async (resource: any, params: any) => {
+            await cleanupFileFields(params);
+            return firebaseDataProvider.delete(resource, params);
+        },
+    };
+
     return (
         <Admin 
             dataProvider={dataProvider}

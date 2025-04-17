@@ -1,4 +1,4 @@
-import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin';
+import { Edit, SimpleForm, TextInput, NumberInput, ImageInput } from 'react-admin';
 
 const ProductEdit = () => (
     <Edit>
@@ -7,6 +7,7 @@ const ProductEdit = () => (
             <TextInput source="name" />
             <TextInput source="slug" />
             <NumberInput source="price" />
+            <ImageInput source="images" />
         </SimpleForm>
     </Edit>
 );

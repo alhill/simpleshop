@@ -11,11 +11,9 @@ const serviceAccount = {
   client_id: import.meta.env.FIREBASE_CLIENT_ID,
   auth_uri: import.meta.env.FIREBASE_AUTH_URI,
   token_uri: import.meta.env.FIREBASE_TOKEN_URI,
-  auth_provider_x509_cert_url: import.meta.env.FIREBASE_AUTH_CERT_URL,
-  client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
+  auth_provider_x509_cert_url: import.meta.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+  client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_X509_CERT_URL,
 };
-
-console.log({ serviceAccount })
 
 const initApp = () => {
   return initializeApp({
